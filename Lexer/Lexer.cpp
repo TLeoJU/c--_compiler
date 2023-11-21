@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+using namespace std;
 #define maxSize 1024
 
 static const char* const KW[6] = {"int", "void", "return", "const", "main", "struct"};   //关键字及其种别码
@@ -270,10 +270,9 @@ int main(){
     fpout = fopen(resultPath, "w");
 
     if((fpin = fopen(path, "r")) != NULL){
-
-    }
-    else{
         cout << "Wrong path!" << endl;
+        system("pause");
+        return 0;
     }
 
     cout << "The results of lexical analysis will be written to the txt file" << endl;
