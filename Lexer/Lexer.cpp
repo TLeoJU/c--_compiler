@@ -4,12 +4,15 @@ using namespace std;
 
 static const char* const KW[6] = {"int", "void", "return", "const", "main", "struct"};   //关键字及其种别码
 static const int   KW_array[6] = {1, 2, 3, 4, 5, 26};
+static const int        KW_num = 6;
 
 static const char* const OP[14] = {"+", "-", "*", "/", "%", "=", ">", "<", "==", "<=", ">=", "!=", "&&", "||"};  //运算符及其种别码
 static const int   OP_array[14] = {6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
+static const int         OP_num = 14;
 
 static const char        SE[6] = {'(', ')', '{', '}', ';', ','}; //界符及其种别码
 static const int   SE_array[6] = {20, 21, 22, 23, 24, 25};
+static const int        SE_num = 6;
 
 static const char  FILTER[3] = {' ', '\n', '\t'};
 
@@ -211,7 +214,7 @@ vector<string> analyse(FILE* fpin){
 }
 
 int isKW(const char* s){
-    for(int i=0; i<6; i++){
+    for(int i=0; i<KW_num; i++){
         if(strcmp(s, KW[i]) == 0)
             return KW_array[i];
     }
@@ -219,7 +222,7 @@ int isKW(const char* s){
 }
 
 int isSE(const char c){
-    for(int i=0; i<6; i++){
+    for(int i=0; i<SE_num; i++){
         if(c == SE[i])
             return SE_array[i];
     }
@@ -227,7 +230,7 @@ int isSE(const char c){
 }
 
 int isOP1(const char c){
-    for(int i=0; i<8; i++){
+    for(int i=0; i<OP_num; i++){
         if(c == OP[i][0])
             return OP_array[i];
     }
@@ -236,7 +239,7 @@ int isOP1(const char c){
 }
 
 int isOP2(const char* s){
-    for(int i=8; i<14; i++){
+    for(int i=0; i<OP_num; i++){
         if(strcmp(s, OP[i]) == 0)
             return OP_array[i];
     }
