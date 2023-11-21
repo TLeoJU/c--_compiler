@@ -77,7 +77,7 @@
 77.	constExp ->  assignExp
 78.	compUnit -> struDef compUnit
 79. decl -> struDecl
-80. struDecl -> struct struType Ident
+80. struDecl -> struct struType Ident ;
 81. struType -> Ident
 82. struDef -> struct Ident { struElem } struVar ;
 83. struVar -> Ident argStruVar
@@ -86,6 +86,6 @@
 86. struElem -> elemDe argStruElem
 87. argStruElem -> elemDe argStruElem
 88. argStruElem -> $
-89. elemDe -> decl ;
+89. elemDe -> decl
 90. elemDe -> funcDef
 91. funcFParam -> struct struType Ident
