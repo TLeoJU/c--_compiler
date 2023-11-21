@@ -1,0 +1,11 @@
+int a = 10;
+struct tree{
+    int b = 912;
+    void cut(struct tree pine, int c){
+        dead();
+    }
+}pine, pineapple, apple;
+
+
+void dead(){
+}
