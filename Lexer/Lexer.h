@@ -1,33 +1,12 @@
-#include <bits/stdc++.h>
+#include "LexerHead.h"
 using namespace std;
 
-#define maxSize 1024    //源文件代码最大长度
-
-static const char* const KW[6] = {"int", "void", "return", "const", "main", "struct"};   //关键字及其种别码、个数
-static const int   KW_array[6] = {1, 2, 3, 4, 5, 26};
-static const int        KW_num = 6;
-
-static const char* const OP[14] = {"+", "-", "*", "/", "%", "=", ">", "<", "==", "<=", ">=", "!=", "&&", "||"};  //运算符及其种别码、个数
-static const int   OP_array[14] = {6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
-static const int         OP_num = 14;
-
-static const char        SE[6] = {'(', ')', '{', '}', ';', ','}; //界符及其种别码、个数
-static const int   SE_array[6] = {20, 21, 22, 23, 24, 25};
-static const int        SE_num = 6;
-
-static const char  FILTER[3] = {' ', '\n', '\t'};   //空白符
-
-int isKW(const char* s);        //判断是否为关键字，是则返回种别码，否则返回0
-int isSE(const char c);         //判断是否为界符，是则返回种别码，否则返回0
-int isOP1(const char c);        //判断是否为单字符运算符，是则返回种别码，否则返回0 ****对'!'符号特别处理****
-int isOP2(const char* s);       //判断是否为双字符运算符，是则返回种别码，否则返回0
-bool isDigit(const char c);     //判断是否为数字，是则返回true
-bool isUnderline(const char c); //判断是否为下划线
-bool isLetter(const char c);    //判断是否为字母
-vector<string> analyse(FILE* fpin);  //给定一个源文件，返回token序列，或者程序不被词法接受的通知
-
-
-vector<string> analyse(FILE* fpin){
+/**
+ * @brief 分析源码是否可被词法接受
+ * @param fpin 源码路径
+ * @return 分析得到的token序列，以及可能的不被接受错误信息
+*/
+vector<string> analyseLexer(FILE* fpin){
 
     char ch;       //当前输入字符
     char str[maxSize] = "";    //代码
@@ -207,6 +186,11 @@ vector<string> analyse(FILE* fpin){
 
 }
 
+/**
+ * @brief 判断符号是否为关键字
+ * @param s 待判断符号
+ * @return 是关键字则返回种别码，否则返回0
+*/
 int isKW(const char* s){
     for(int i=0; i<KW_num; i++){
         if(strcmp(s, KW[i]) == 0)
@@ -215,6 +199,11 @@ int isKW(const char* s){
     return 0;
 }
 
+/**
+ * @brief 判断符号是否为界符
+ * @param c 待判断符号
+ * @return 是界符则返回种别码，否则返回0
+*/
 int isSE(const char c){
     for(int i=0; i<SE_num; i++){
         if(c == SE[i])
@@ -223,15 +212,24 @@ int isSE(const char c){
     return 0;
 }
 
+/**
+ * @brief 判断符号是否为单算符
+ * @param c 待判断符号
+ * @return 是单算符则返回种别码，否则返回0
+*/
 int isOP1(const char c){
     for(int i=0; i<OP_num; i++){
         if(c == OP[i][0])
             return OP_array[i];
     }
-    if (c == '!')   return 17;
     return 0;
 }
 
+/**
+ * @brief 判断符号是否为双算符
+ * @param s 待判断符号
+ * @return 是双算符则返回种别码，否则返回0
+*/
 int isOP2(const char* s){
     for(int i=0; i<OP_num; i++){
         if(strcmp(s, OP[i]) == 0)
@@ -240,49 +238,57 @@ int isOP2(const char* s){
     return 0;
 }
 
+/**
+ * @brief 判断字符是否为常数
+ * @param c 待判断字符
+ * @return 是常数则返回true，否则返回0
+*/
 bool isDigit(const char c){
     if(c>='0' && c<='9')
         return true;
     else return false;
 }
 
+/**
+ * @brief 判断字符是否为下划线
+ * @param c 待判断字符
+ * @return 是下划线则返回true，否则返回0
+*/
 bool isUnderline(const char c){
     if(c == '_')
         return true;
     else return false;
 }
 
+/**
+ * @brief 判断字符是否为字母
+ * @param c 待判断字符
+ * @return 是字母则返回true，否则返回0
+*/
 bool isLetter(const char c){
     if((c >= 'A' && c<= 'Z')||(c >= 'a' && c <= 'z'))
         return true;
     else return false;
 }
 
-int main(){
-
-    char path[80] = "D:\\Code\\CPP\\cpp\\compilationAssignment\\Lexer\\hello.sy";
-    FILE* fpin;
-    char resultPath[80] = "D:\\Code\\CPP\\cpp\\compilationAssignment\\Lexer\\result.txt";
-    FILE* fpout;
-    fpin = fopen(path, "r");
-    fpout = fopen(resultPath, "w");
-
-    if(fpin == NULL){
-        cout << "Wrong path!" << endl;
-        return 0;
+/**
+ * @brief 向输出流打印结果
+ * @param result 使用analyseLexer函数获得的token序列
+*/
+void print(vector<string> result){
+    for(auto it : result){
+        cout << it << endl;
     }
+}
 
-    cout << "The results of lexical analysis will be written to the txt file" << endl;
-    vector<string> result = analyse(fpin);
-    for(vector<string>::iterator it=result.begin(); it!=result.end(); it++){
-        string k = *it;
-        fputs(k.c_str(), fpout);
+/**
+ * @brief 向输出流打印结果
+ * @param result 使用analyseLexer函数获得的token序列
+ * @param fpout 指定输出文件路径
+*/
+void print(vector<string> result, FILE* fpout){
+    for(auto it : result){
+        fputs(it.c_str(), fpout);
         fputc('\n', fpout);
     }
-    fclose(fpin);
-    fclose(fpout);
-    cout << "Finish\n";
-
-    system("pause");
-    return 0;
 }
