@@ -1,0 +1,92 @@
+1.	program -> compUnit
+2.	compUnit -> decl compUnit
+3.	compUnit -> funcDef  compUnit
+4.	compUnit -> $
+5.	decl -> constDecl
+6.	decl -> varDecl
+7.	constDecl -> const bType constDef argConst ;
+8.	argConst -> , constDef argConst
+9.	argConst -> $
+10.	constDef -> Ident = constInitVal
+11.	constInitVal -> constExp
+12.	varDecl -> bType varDef argVarDecl ;
+13.	argVarDecl -> , varDef argVarDecl
+14.	argVarDecl -> $
+15.	varDef -> Ident argVarDef
+16.	argVarDef -> = initVal
+17.	argVarDef -> $
+18.	initVal -> exp
+19.	bType -> int
+20.	funcDef -> funcType Ident ( funcFParams ) block
+21.	funcType -> void
+22.	funcFParams -> funcFParam argFunctionF
+23.	funcFParams -> $
+24.	argFunctionF -> , funcFParam argFunctionF
+25.	argFunctionF -> $
+26.	funcFParam -> bType Ident
+27.	block -> { blockItem }
+28.	blockItem -> decl blockItem
+29.	blockItem -> stmt blockItem
+30.	blockItem -> $
+31.	stmt -> exp ;
+32.	stmt -> ;
+33.	stmt -> block
+34.	stmt -> return argExp ;
+35.	argExp -> $
+36.	argExp -> exp
+37.	exp -> assignExp
+38.	lVal -> Ident
+39.	primaryExp -> ( exp )
+40.	primaryExp -> number
+41.	number -> INT
+42.	unaryOp ->  +
+43.	unaryOp ->  -
+44.	unaryOp ->  !
+45.	unaryExp -> unaryOp unaryExp
+46.	unaryExp -> Ident callFunc
+47.	callFunc -> ( funcRParams )
+48.	callFunc -> $
+49.	unaryExp -> primaryExp
+50.	funcRParams ->  funcRParam argFunctionR
+51.	funcRParams -> $
+52.	argFunctionR -> , funcRParam argFunctionR
+53.	argFunctionR -> $
+54.	funcRParam ->  exp
+55.	mulExp -> unaryExp mulExpAtom
+56.	mulExpAtom -> * unaryExp mulExpAtom
+57.	mulExpAtom -> / unaryExp mulExpAtom
+58.	mulExpAtom -> % unaryExp mulExpAtom
+59.	mulExpAtom -> $
+60.	addExp -> mulExp addExpAtom
+61.	addExpAtom -> + mulExp addExpAtom
+62.	addExpAtom -> - mulExp addExpAtom
+63.	addExpAtom -> $
+64.	relExp -> addExp relExpAtom
+65.	relExpAtom -> < addExp relExpAtom
+66.	relExpAtom -> > addExp relExpAtom
+67.	relExpAtom -> <= addExp relExpAtom
+68.	relExpAtom -> >= addExp relExpAtom
+69.	relExpAtom -> $
+70.	eqExp -> relExp eqExpAtom
+71.	eqExpAtom -> == relExp eqExpAtom
+72.	eqExpAtom -> != relExp eqExpAtom
+73.	eqExpAtom -> $
+74.	assignExp -> eqExp assignExpAtom
+75.	assignExpAtom -> = eqExp assignExpAtom
+76.	assignExpAtom -> $
+77.	constExp ->  assignExp
+78.	compUnit -> struDef compUnit
+79.	elemDe -> struDecl
+80.	struDecl -> struct struType Ident ;
+81.	struType -> Ident
+82.	struDef -> struct Ident { struElem } struVar ;
+83.	struVar -> Ident argStruVar
+84.	struVar -> $
+85.	argStruVar -> , Ident argStruVar
+86.	argStruVar -> $
+87.	struElem -> elemDe argStruElem
+88.	argStruElem -> elemDe argStruElem
+89.	argStruElem -> $
+90.	elemDe -> decl
+91.	elemDe -> funcDef
+92.	funcFParam -> struct struType Ident
