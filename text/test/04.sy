@@ -1,0 +1,15 @@
+struct MutationBlock {
+	int a;
+	int b;
+
+	void my_func (int a, int b, struct MutationBlock ccc) {
+		return a+b; 
+	}
+};
+
+int a=3, b=1, c=3;
+
+void func() {
+	int a=5;
+	return a+b;
+}
