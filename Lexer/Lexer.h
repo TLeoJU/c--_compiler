@@ -1,3 +1,10 @@
+/**
+ * @file
+ * @brief 词法分析器的实现，核心函数为analyseLexer
+ * @author zhn
+ * @date Sat Nov 25 16:06:21 2023
+*/
+
 #include "LexerHead.h"
 using namespace std;
 

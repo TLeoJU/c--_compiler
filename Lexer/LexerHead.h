@@ -1,3 +1,10 @@
+/**
+ * @file
+ * @brief 词法分析器的参数定义和函数原型声明
+ * @author zhn
+ * @date Sat Nov 25 16:06:21 2023
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

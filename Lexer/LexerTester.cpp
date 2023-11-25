@@ -3,9 +3,9 @@ using namespace std;
 
 int main(){
 
-    char path[80] = "./compilerFront/test/05.sy";
+    char path[80] = "./compilerFront/text/test/04.sy";
     FILE* fpin;
-    char resultPath[80] = "./compilerFront/result/lexerResult05.txt";
+    char resultPath[80] = "./compilerFront/text/token/token04.txt";
     FILE* fpout;
     fpin = fopen(path, "r");
     fpout = fopen(resultPath, "w");
