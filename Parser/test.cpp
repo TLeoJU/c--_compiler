@@ -2,6 +2,7 @@
 using namespace std;
 
 int main() {
+    //读取文法并初始化语法分析器
     char readFile[80] = "./compilerFront/text/Grammar.txt";
     FILE* fpin = fopen(readFile, "r");
     if(fpin == NULL){
@@ -12,6 +13,7 @@ int main() {
     initParser(fpin);
     fclose(fpin);
 
+    // 读取源程序并启用语法分析
     char readToken[80] = "./compilerFront/text/token/token05.txt";
     FILE* fptoken = fopen(readToken, "r");
     if(fptoken == NULL){
@@ -28,18 +30,36 @@ int main() {
         cout << "Error!" << endl;
     fclose(fptoken);
 
-    char writeResult[80] = "./compilerFront/text/result/result05.txt";
-    FILE* fpresult = fopen(writeResult, "w");
-    if(fpresult == NULL){
-        cout << "wrong path!\n";
-        system("pause");
-        return 0;
-    }
-    for(auto it : result){
-        fprintf(fpresult, "%s\n", it.c_str());
-    }
-    fclose(fpresult);
+    // 向文件写入一个非终结符的预测分析列表
+    // char writeTable[80] = "./compilerFront/text/Tableof_relExpAtom.txt";
+    // FILE* fptable = fopen(writeTable, "w");
+    // if(fptable == NULL){
+    //     cout << "wrong path!\n";
+    //     system("pause");
+    //     return 0;
+    // }
+    // fprintf(fptable, "relExpAtom:\n");
+    // for(auto pro : table["relExpAtom"]){
+    //     fprintf(fptable, "(%s):\t", pro.first.c_str());
+    //     for(auto sym : pro.second){
+    //         fprintf(fptable, " %s", sym.c_str());
+    //     }
+    //     fputc('\n', fptable);
+    // }
+    // fclose(fptable);
 
+    // 向文件写入分析结果
+    // char writeResult[80] = "./compilerFront/text/result/result05.txt";
+    // FILE* fpresult = fopen(writeResult, "w");
+    // if(fpresult == NULL){
+    //     cout << "wrong path!\n";
+    //     system("pause");
+    //     return 0;
+    // }
+    // for(auto it : result){
+    //     fprintf(fpresult, "%s\n", it.c_str());
+    // }
+    // fclose(fpresult);
 
     // 打印FIRST集和FOLLOW集
     // printFirst();
