@@ -1,0 +1,27 @@
+relExpAtom
+"!"	 	    error
+"!="	 	$
+"%"	 	    error
+"("	 	    error
+")"	 	    $
+"*"	 	    error
+"+"	 	    error
+","	 	    $
+"-"	 	    error
+"/"	 	    error
+";"	 	    $
+"<"	 	    < addExp relExpAtom
+"<="	 	<= addExp relExpAtom
+"="	 	    $
+"=="	 	$
+">"	 	    > addExp relExpAtom
+">="	 	>= addExp relExpAtom
+"INT"	 	error
+"Ident"	    error
+"const"	    error
+"int"	 	error
+"return"	error
+"struct"	error
+"void"	 	error
+"{"	 	    error
+"}"	 	    error

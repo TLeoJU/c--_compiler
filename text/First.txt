@@ -1,0 +1,51 @@
+FIRST(addExp)				=	!	(	+	-	INT	Ident
+FIRST(addExpAtom)			=	$	+	-
+FIRST(argConst)				=	$	Ident
+FIRST(argExp)				=	!	$	(	+	-	INT	Ident
+FIRST(argFunctionF)			=	$	int	struct
+FIRST(argFunctionR)			=	!	$	(	+	-	INT	Ident
+FIRST(argStruElem)			=	$	const	int	struct	void
+FIRST(argStruVar)			=	$	Ident
+FIRST(argVarDecl)			=	$	Ident
+FIRST(argVarDef)			=	$	=
+FIRST(assignExp)			=	!	(	+	-	INT	Ident
+FIRST(assignExpAtom)		=	$	=
+FIRST(bType)				=	int
+FIRST(block)				=	{
+FIRST(blockItem)			=	!	$	(	+	-	;	INT	Ident	const	int	return	struct	{
+FIRST(callFunc)				=	$	(
+FIRST(compUnit)				=	$	const	int	struct	void
+FIRST(constDecl)			=	const
+FIRST(constDef)				=	Ident
+FIRST(constExp)				=	!	(	+	-	INT	Ident
+FIRST(constInitVal)			=	!	(	+	-	INT	Ident
+FIRST(decl)					=	const	int	struct
+FIRST(elemDe)				=	const	int	struct	void
+FIRST(eqExp)				=	!	(	+	-	INT	Ident
+FIRST(eqExpAtom)			=	!=	$	==
+FIRST(exp)					=	!	(	+	-	INT	Ident
+FIRST(funcDef)				=	void
+FIRST(funcFParam)			=	int	struct
+FIRST(funcFParams)			=	$	int	struct
+FIRST(funcRParam)			=	!	(	+	-	INT	Ident
+FIRST(funcRParams)			=	!	$	(	+	-	INT	Ident
+FIRST(funcType)				=	void
+FIRST(initVal)				=	!	(	+	-	INT	Ident
+FIRST(lVal)					=	Ident
+FIRST(mulExp)				=	!	(	+	-	INT	Ident
+FIRST(mulExpAtom)			=	$	%	*	/
+FIRST(number)				=	INT
+FIRST(primaryExp)			=	(	INT
+FIRST(program)				=	$	const	int	struct	void
+FIRST(relExp)				=	!	(	+	-	INT	Ident
+FIRST(relExpAtom)			=	$	<	<=	>	>=
+FIRST(stmt)					=	!	(	+	-	;	INT	Ident	return	{
+FIRST(struDecl)				=	struct
+FIRST(struDef)				=	struct
+FIRST(struElem)				=	const	int	struct	void
+FIRST(struType)				=	Ident
+FIRST(struVar)				=	$	Ident
+FIRST(unaryExp)				=	!	(	+	-	INT	Ident
+FIRST(unaryOp)				=	!	+	-
+FIRST(varDecl)				=	int
+FIRST(varDef)				=	Ident

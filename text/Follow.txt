@@ -1,0 +1,51 @@
+FOLLOW(addExp)				=	!	!=	(	)	+	-	;	<	<=	=	==	>	>=	INT	Ident
+FOLLOW(addExpAtom)			=	!	!=	(	)	+	-	;	<	<=	=	==	>	>=	INT	Ident
+FOLLOW(argConst)			=	;
+FOLLOW(argExp)				=	;
+FOLLOW(argFunctionF)		=	)
+FOLLOW(argFunctionR)		=	)
+FOLLOW(argStruElem)			=	}
+FOLLOW(argStruVar)			=	;
+FOLLOW(argVarDecl)			=	;
+FOLLOW(argVarDef)			=	;	Ident
+FOLLOW(assignExp)			=	!	(	)	+	-	;	INT	Ident
+FOLLOW(assignExpAtom)		=	!	(	)	+	-	;	INT	Ident
+FOLLOW(bType)				=	Ident
+FOLLOW(block)				=	!	#	(	+	-	;	INT	Ident	const	int	return	struct	void	{	}
+FOLLOW(blockItem)			=	}
+FOLLOW(callFunc)			=	!	!=	%	(	)	*	+	-	/	;	<	<=	=	==	>	>=	INT	Ident
+FOLLOW(compUnit)			=	#
+FOLLOW(constDecl)			=	!	#	(	+	-	;	INT	Ident	const	int	return	struct	void	{	}
+FOLLOW(constDef)			=	;	Ident
+FOLLOW(constExp)			=	;	Ident
+FOLLOW(constInitVal)		=	;	Ident
+FOLLOW(decl)				=	!	#	(	+	-	;	INT	Ident	const	int	return	struct	void	{	}
+FOLLOW(elemDe)				=	const	int	struct	void	}
+FOLLOW(eqExp)				=	!	(	)	+	-	;	=	INT	Ident
+FOLLOW(eqExpAtom)			=	!	(	)	+	-	;	=	INT	Ident
+FOLLOW(exp)					=	!	(	)	+	-	;	INT	Ident
+FOLLOW(funcDef)				=	#	const	int	struct	void	}
+FOLLOW(funcFParam)			=	)	int	struct
+FOLLOW(funcFParams)			=	)
+FOLLOW(funcRParam)			=	!	(	)	+	-	INT	Ident
+FOLLOW(funcRParams)			=	)
+FOLLOW(funcType)			=	Ident
+FOLLOW(initVal)				=	;	Ident
+FOLLOW(lVal)				=
+FOLLOW(mulExp)				=	!	!=	(	)	+	-	;	<	<=	=	==	>	>=	INT	Ident
+FOLLOW(mulExpAtom)			=	!	!=	(	)	+	-	;	<	<=	=	==	>	>=	INT	Ident
+FOLLOW(number)				=	!	!=	%	(	)	*	+	-	/	;	<	<=	=	==	>	>=	INT	Ident
+FOLLOW(primaryExp)			=	!	!=	%	(	)	*	+	-	/	;	<	<=	=	==	>	>=	INT	Ident
+FOLLOW(program)				=	#
+FOLLOW(relExp)				=	!	!=	(	)	+	-	;	=	==	INT	Ident
+FOLLOW(relExpAtom)			=	!	!=	(	)	+	-	;	=	==	INT	Ident
+FOLLOW(stmt)				=	!	(	+	-	;	INT	Ident	const	int	return	struct	{	}
+FOLLOW(struDecl)			=	!	#	(	+	-	;	INT	Ident	const	int	return	struct	void	{	}
+FOLLOW(struDef)				=	#	const	int	struct	void
+FOLLOW(struElem)			=	}
+FOLLOW(struType)			=	Ident
+FOLLOW(struVar)				=	;
+FOLLOW(unaryExp)			=	!	!=	%	(	)	*	+	-	/	;	<	<=	=	==	>	>=	INT	Ident
+FOLLOW(unaryOp)				=	!	(	+	-	INT	Ident
+FOLLOW(varDecl)				=	!	#	(	+	-	;	INT	Ident	const	int	return	struct	void	{	}
+FOLLOW(varDef)				=	;	Ident
