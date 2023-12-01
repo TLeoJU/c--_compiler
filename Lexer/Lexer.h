@@ -45,13 +45,13 @@ vector<string> analyseLexer(FILE* fpin){
 
         //若当前字符为界符，输出token，index+=1，之后是否出界交由while条件判断
         if(typeCode = isSE(ch)){
-            //将种别码转化为char*类型以便生成token
-            char tc[2];
-            itoa(typeCode, tc, 10); 
+            // //将种别码转化为char*类型以便生成token
+            // char tc[2];
+            // itoa(typeCode, tc, 10); 
 
             //生成本条序列，例如 "{\t<SE,22>"
             string tk;
-            tk = tk + ch + "\t<SE," + tc + ">";
+            tk = tk + ch + "\t<SE," + to_string(typeCode) + ">";
             
             //将本条token序列加入容器中
             token.push_back(tk);
@@ -87,13 +87,13 @@ vector<string> analyseLexer(FILE* fpin){
             const char OP2[2] = {ch, nextCh};   //保存当前两位字符
             //若为二位运算符
             if(isOP2(OP2)){
-                //将种别码化为char*类型
+                // //将种别码化为char*类型
                 typeCode = isOP2(OP2);
-                char tc[2];
-                itoa(typeCode, tc, 10);
+                // char tc[2];
+                // itoa(typeCode, tc, 10);
                 //生成本条token
                 string tk;
-                tk = tk + OP2 + "\t<OP," + tc + ">";
+                tk = tk + OP2 + "\t<OP," + to_string(typeCode) + ">";
                 //将本条token加入容器，指针下移2位
                 token.push_back(tk);
                 index += 2;
@@ -108,11 +108,11 @@ vector<string> analyseLexer(FILE* fpin){
             else{
                 //种别码转化为char*
                 typeCode = isOP1(ch);
-                char tc[2];
-                itoa(typeCode, tc, 10);
+                // char tc[2];
+                // itoa(typeCode, tc, 10);
                 //生成本条token
                 string tk;
-                tk = tk + ch + "\t<OP," + tc + ">";
+                tk = tk + ch + "\t<OP," + to_string(typeCode) + ">";
                 //本条token加入容器，指针下移1位
                 token.push_back(tk);
                 index++;
@@ -154,10 +154,10 @@ vector<string> analyseLexer(FILE* fpin){
             }
             //若为关键字
             if(typeCode = isKW(s.c_str())){
-                char tc[2];
-                itoa(typeCode, tc, 10);
+                // char tc[2];
+                // itoa(typeCode, tc, 10);
                 string tk;
-                tk += s + "\t<KW," + tc + ">";
+                tk += s + "\t<KW," + to_string(typeCode) + ">";
                 token.push_back(tk);
                 index = front;
                 continue;
@@ -183,10 +183,10 @@ vector<string> analyseLexer(FILE* fpin){
     //若程序不被词法接受，将错误信息及已生成token一并返回
     if(isError){
         string message = "This program is not accepted by this vocabulary!\n";
-        message += "Error occurs near the character ";
-        char indexS[4];
-        itoa(index, indexS, 10);
-        message.append(indexS);
+        message += "Error occurs near the character " + to_string(index);
+        // char indexS[4];
+        // itoa(index, indexS, 10);
+        // message.append(indexS);
         token.push_back(message);
     }
     return token;
