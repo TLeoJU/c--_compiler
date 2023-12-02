@@ -7,6 +7,7 @@ int main(){
     int stature_Dad;
     int stature_Mon;
 
+    printf("hello world");
 
     printf("please enter your gender ( f / m )\n");
     scanf(" %c", &gender);
